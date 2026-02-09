@@ -1,0 +1,39 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: cart-service
+
+  datasource:
+    url: jdbc:postgresql://postgres-cart:5432/ecommerce_cart
+    username: ecommerce_cart_user
+    password: CartPass123!
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+product-service:
+  url: http://product-service:8081
+
+inventory-service:
+  url: http://inventory-service:8084
+
+pricing-service:
+  url: http://pricing-service:8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
