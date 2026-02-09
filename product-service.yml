@@ -7,9 +7,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://mongodb:27017/ecommerce_product?authSource=ecommerce_product
-      username: product_user
-      password: Product123
+      uri: mongodb://product_user:Product123@localhost:27017/ecommerce_product?authSource=ecommerce_product
       auto-index-creation: true
 
   cache:
@@ -26,9 +24,36 @@ spring:
             readTimeout: 10000
 
 inventory-service:
-  url: http://inventory-service:8084
+  url: http://localhost:8084
 
 eureka:
   client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://discovery-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventoryClient:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+  retry:
+    instances:
+      inventoryClient:
+        maxAttempts: 3
+        waitDuration: 500ms
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
