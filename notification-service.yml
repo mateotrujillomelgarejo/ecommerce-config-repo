@@ -16,17 +16,35 @@ spring:
           auth: true
           starttls:
             enable: true
+            required: true
 
   rabbitmq:
-    host: rabbitmq
+    host: localhost
     port: 5672
     username: guest
     password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 2s
+        default-requeue-rejected: false
 
   data:
     redis:
-      host: redis
+      host: localhost
       port: 6379
+
+  thymeleaf:
+    cache: false
+
+resilience4j:
+  retry:
+    instances:
+      emailSender:
+        maxAttempts: 3
+        waitDuration: 500ms
 
 notification:
   from: "Tu Tienda <no-reply@tutienda.pe>"
@@ -36,5 +54,10 @@ notification:
 
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://discovery-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    prefer-ip-address: true
