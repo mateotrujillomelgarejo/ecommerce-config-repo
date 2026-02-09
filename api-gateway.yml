@@ -52,9 +52,16 @@ eureka:
     fetch-registry: true
     registry-fetch-interval-seconds: 5
     disable-delta: true
+    use-dns-for-fetching-service-urls: false
+    eureka-server-connect-timeout-seconds: 10
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
     com.netflix.discovery: DEBUG
+    org.springframework.cloud.gateway: DEBUG
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
