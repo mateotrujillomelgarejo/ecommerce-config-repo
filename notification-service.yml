@@ -8,8 +8,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${NOTIFICATION_EMAIL_USER}
-    password: ${NOTIFICATION_EMAIL_PASSWORD}
+    username: knightmight10@gmail.com
+    password: hsaecofbnypfoxup
     properties:
       mail:
         smtp:
@@ -46,11 +46,11 @@ resilience4j:
         maxAttempts: 3
         waitDuration: 500ms
 
-notification:
-  from: "Tu Tienda <no-reply@tutienda.pe>"
-  subject:
-    order-created: "¡Recibimos tu pedido! #{orderId}"
-    order-confirmed: "¡Pago confirmado! Tu pedido #{orderId} está en proceso"
+  notification:
+    from: "Tu Tienda <no-reply@tutienda.pe>"
+    subject:
+      order-created: "¡Recibimos tu pedido! #{orderId}"
+      order-confirmed: "¡Pago confirmado! Tu pedido #{orderId} está en proceso"
 
 eureka:
   client:
@@ -61,3 +61,4 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
