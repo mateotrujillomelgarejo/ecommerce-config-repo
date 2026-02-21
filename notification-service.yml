@@ -46,7 +46,7 @@ resilience4j:
         maxAttempts: 3
         waitDuration: 500ms
 
-  notification:
+notification:
     from: "Tu Tienda <no-reply@tutienda.pe>"
     subject:
       order-created: "¡Recibimos tu pedido! #{orderId}"
@@ -61,4 +61,5 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
 
