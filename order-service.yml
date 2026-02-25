@@ -18,6 +18,7 @@ spring:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
     show-sql: false
@@ -65,5 +66,6 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
 
 
