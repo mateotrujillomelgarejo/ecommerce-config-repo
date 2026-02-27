@@ -10,29 +10,17 @@ spring:
     username: customer_user
     password: CustomerPass123!
     driver-class-name: org.postgresql.Driver
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: 6379
 
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: update
     show-sql: true
-
-resilience4j:
-  retry:
-    instances:
-      guestService:
-        maxAttempts: 3
-        waitDuration: 2s
-        retryExceptions:
-          - org.springframework.dao.DataAccessException
-          - java.util.concurrent.TimeoutException
-          - org.springframework.data.redis.RedisConnectionFailureException
 
 management:
   endpoints:
@@ -49,6 +37,7 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
 
 
 
