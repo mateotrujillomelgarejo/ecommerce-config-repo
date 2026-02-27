@@ -4,22 +4,17 @@ server:
 spring:
   application:
     name: product-service
-
   data:
     mongodb:
       uri: mongodb://product_user:Product123@${DB_HOST:localhost}:27017/ecommerce_product?authSource=admin
       auto-index-creation: true
-
-  data:
     redis:
-      host: ${REDIS_HOST:localhost}
+      host: ${REDIS_HOST:redis-cache}
       port: 6379
-
   cache:
-    type: REDIS
+    type: redis
     redis:
-      time-to-live: 300000
-
+      time-to-live: 300000   # 5 minutos
   cloud:
     openfeign:
       client:
@@ -27,7 +22,6 @@ spring:
           default:
             connectTimeout: 5000
             readTimeout: 10000
-
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: 5672
@@ -68,9 +62,3 @@ management:
 
 inventory-service:
   url: ${INVENTORY_SERVICE_URL:http://localhost:8084}
-
-
-
-
-
-
