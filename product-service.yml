@@ -7,7 +7,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://product_user:Product123@${DB_HOST:localhost}:27017/ecommerce_product?authSource=ecommerce_product
+      uri: mongodb://product_user:Product123@${DB_HOST:localhost}:27017/ecommerce_product?authSource=admin
       auto-index-creation: true
 
   cache:
@@ -63,6 +63,7 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
+
 
 
 
