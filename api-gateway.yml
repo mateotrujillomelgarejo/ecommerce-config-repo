@@ -15,30 +15,37 @@ spring:
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/products/**
+
         - id: cart-service
           uri: lb://CART-SERVICE
           predicates:
             - Path=/cart/**
+
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/orders/**
+
         - id: customer-service
           uri: lb://CUSTOMER-SERVICE
           predicates:
             - Path=/guests/**
+
         - id: inventory-service
           uri: lb://INVENTORY-SERVICE
           predicates:
             - Path=/inventory/**
+
         - id: pricing-service
           uri: lb://PRICING-SERVICE
           predicates:
             - Path=/pricing/**
+
         - id: shipping-service
           uri: lb://SHIPPING-SERVICE
           predicates:
             - Path=/shipping/**
+
         - id: payment-service
           uri: lb://PAYMENT-SERVICE
           predicates:
@@ -47,7 +54,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
     registry-fetch-interval-seconds: 5
@@ -59,10 +66,3 @@ logging:
   level:
     com.netflix.discovery: DEBUG
     org.springframework.cloud.gateway: DEBUG
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics
-
