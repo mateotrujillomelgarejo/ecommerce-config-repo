@@ -6,13 +6,13 @@ spring:
     name: order-service
 
   rabbitmq:
-    host: localhost
+    host: ${RABBITMQ_HOST:localhost}
     port: 5672
     username: guest
     password: guest
 
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=orderdb;encrypt=true;trustServerCertificate=true
+    url: jdbc:sqlserver://${DB_HOST:localhost}:1433;databaseName=orderdb;encrypt=true;trustServerCertificate=true
     username: order_user
     password: TuPasswordFuerte123!
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -24,7 +24,7 @@ spring:
     show-sql: false
 
 customer-service:
-  url: http://localhost:8085
+  url: ${CUSTOMER_SERVICE_URL:http://localhost:8085}
 
 resilience4j:
   circuitbreaker:
@@ -62,10 +62,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
 
   instance:
     prefer-ip-address: true
+
 
 
 
