@@ -25,6 +25,11 @@ spring:
       host: localhost
       port: 6379
 
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 product-service:
   url: http://localhost:8081
 
@@ -48,3 +53,21 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      pricingService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+      inventoryService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+  retry:
+    instances:
+      productService:
+        maxAttempts: 3
+        waitDuration: 2s
