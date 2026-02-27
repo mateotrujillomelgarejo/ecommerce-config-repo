@@ -4,22 +4,7 @@ server:
 spring:
   application:
     name: cart-service
-
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ecommerce_cart
-    username: ecommerce_cart_user
-    password: CartPass123!
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-
+    
   data:
     redis:
       host: ${REDIS_HOST:localhost}
@@ -71,4 +56,5 @@ resilience4j:
       productService:
         maxAttempts: 3
         waitDuration: 2s
+
 
