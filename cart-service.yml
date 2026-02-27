@@ -6,7 +6,7 @@ spring:
     name: cart-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/ecommerce_cart
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ecommerce_cart
     username: ecommerce_cart_user
     password: CartPass123!
     driver-class-name: org.postgresql.Driver
@@ -22,7 +22,7 @@ spring:
 
   data:
     redis:
-      host: localhost
+      host: ${REDIS_HOST:localhost}
       port: 6379
 
   cloud:
@@ -31,13 +31,13 @@ spring:
         enabled: true
 
 product-service:
-  url: http://localhost:8081
+  url: ${PRODUCT_SERVICE_URL:http://localhost:8081}
 
 inventory-service:
-  url: http://localhost:8084
+  url: ${INVENTORY_SERVICE_URL:http://localhost:8084}
 
 pricing-service:
-  url: http://localhost:8090
+  url: ${PRICING_SERVICE_URL:http://localhost:8090}
 
 cart:
   cache:
@@ -49,7 +49,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
 
   instance:
     prefer-ip-address: true
@@ -71,3 +71,4 @@ resilience4j:
       productService:
         maxAttempts: 3
         waitDuration: 2s
+
