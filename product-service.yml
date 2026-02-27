@@ -29,9 +29,6 @@ spring:
     username: guest
     password: guest
 
-inventory-service:
-  url: ${INVENTORY_SERVICE_URL:http://localhost:8084}
-
 eureka:
   client:
     enabled: true
@@ -66,6 +63,7 @@ management:
 
 inventory-service:
   url: ${INVENTORY_SERVICE_URL:http://localhost:8084}
+
 
 
 
