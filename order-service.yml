@@ -18,7 +18,7 @@ spring:
 
   datasource:
     url: jdbc:sqlserver://${DB_HOST:localhost}:1433;databaseName=orderdb;encrypt=true;trustServerCertificate=true
-    username: order_user
+    username: sa
     password: TuPasswordFuerte123!
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
@@ -73,4 +73,5 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
 
