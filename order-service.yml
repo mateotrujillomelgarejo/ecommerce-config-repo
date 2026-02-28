@@ -30,9 +30,6 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:default}
 
-customer-service:
-  url: ${CUSTOMER_SERVICE_URL:http://localhost:8085}
-
 resilience4j:
   circuitbreaker:
     instances:
@@ -70,8 +67,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka/
-
   instance:
     prefer-ip-address: true
+
 
 
