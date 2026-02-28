@@ -14,7 +14,7 @@ spring:
   cache:
     type: redis
     redis:
-      time-to-live: 300000   # 5 minutos
+      time-to-live: 300000
   cloud:
     openfeign:
       client:
@@ -59,6 +59,3 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
-
-inventory-service:
-  url: ${INVENTORY_SERVICE_URL:http://localhost:8084}
