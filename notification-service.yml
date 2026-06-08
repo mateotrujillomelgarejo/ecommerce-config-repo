@@ -5,9 +5,6 @@ spring:
   application:
     name: notification-service
 
-  config:
-    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8888}
-
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
     port: ${MAIL_PORT:587}
