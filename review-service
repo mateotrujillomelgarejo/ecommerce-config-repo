@@ -5,9 +5,6 @@ spring:
   application:
     name: review-service
 
-  config:
-    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8888}
-
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/review_db
     username: ${DB_USER:review_user}
