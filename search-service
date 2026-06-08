@@ -5,9 +5,6 @@ spring:
   application:
     name: search-service
 
-  config:
-    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8888}
-
   elasticsearch:
     uris: http://${ELASTICSEARCH_HOST:localhost}:9200
     username: ${ELASTICSEARCH_USER:}
